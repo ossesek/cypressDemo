@@ -1,5 +1,13 @@
 # cypressDemo
 
+- origin - github repo
+- origin2 - gitlab repo
+
+> npm run cy:open - opens cypress app
+> npm run cy:run - runs test 
+    add --spec "spec-path" to run particular test
+    spec doc: https://docs.cypress.io/guides/guides/command-line
+    By default, cypress run will run all tests headlessly
 
 
 ## Getting started

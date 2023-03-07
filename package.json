@@ -4,7 +4,11 @@
   "description": "Cypress demo project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:open-config": "cypress open --browser /usr/bin/chromium",
+    "cy:run" : "cypress run",
+    "cy:run-config" : "cypress run --browser chrome --auto-cancel-after-failures 2 run --headed --reporter json",
+    "cy:run-mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
   },
   "repository": {
     "type": "git",
