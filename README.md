@@ -19,6 +19,17 @@ By default, cypress run will run all tests headlessly
 
 Cypress bundles the popular Chai assertion library, as well as helpful extensions for Sinon and jQuery, bringing you dozens of powerful assertions for free
 
+- should - contain
+- should - have. (class, text, html)
+- should - be. (visible, selected, disabled, focused)
+- should - equal 
+<br />
+
+- expect().to.be (true, equal)
+- assert.equal(actual, expected, message to display on error) 
+- assert.isAbove .isBelow .exist .strictEqual - (e.g. 4 and '4') 
+<br />
+
 > for assertion doc refer to: https://docs.cypress.io/guides/references/assertions
 
 
@@ -39,3 +50,11 @@ To merge reports use below command:
 
 > npx mochawesome-merge cypress/output/reports/*.json > cypress/output/report.json or <br />
 > npm run cy:report 
+
+
+## Page Object model 
+
+design principle:
+- keep objects & methods separate from test script  (efficient reusability)
+
+You can find it and save it under cypress/pages folder
