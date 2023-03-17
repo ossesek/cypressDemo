@@ -22,7 +22,7 @@ describe('Test login & logout feature of skleptest.pl', () => {
     cy.log(`Starting login process`);
     cy.get('input').contains('Login').click();
 
-    cy.get('a').contains('Logout');
+    cy.contains('a', 'Logout').should('be.visible').and('have.attr', 'href');
     cy.log(`User successfully logged in`);
   })
 
@@ -33,8 +33,8 @@ describe('Test login & logout feature of skleptest.pl', () => {
     cy.log(`Negative case: Starting login process`);
     cy.get('input').contains('Login').click();
 
-    cy.get('strong').should('have.text','Error:');
-    cy.get('li').contains('user could not be found');
+    cy.contains('strong','Error:');
+    cy.contains('li','user could not be found');
     cy.log(`Negative case: Log in failed`);
   })
 
@@ -45,8 +45,8 @@ describe('Test login & logout feature of skleptest.pl', () => {
     cy.log(`Starting login process`);
     cy.get('input').contains('Login').click();
 
-    cy.get('strong').contains('ERROR');
-    cy.get('li').contains(`The password you entered for the username ${data.goodEmail} is incorrect`);
+    cy.contains('strong','ERROR');
+    cy.contains('li',`The password you entered for the username ${data.goodEmail} is incorrect`);
     cy.log(`Negative case: Log in failed`);
   })
 
