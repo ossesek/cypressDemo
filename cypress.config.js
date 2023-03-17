@@ -2,8 +2,17 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    baseUrl: null,
+    testIsolation: true,
   },
+  reporterOptions: null,
+  retries: { "runMode": 0, "openMode": 0 },
+  pageLoadTimeout: 30000, //60000 default 
+  responseTimeout: 60000, //30000 default
+  downloadsFolder: 'cypress/output', 
+  fixturesFolder: 'cypress/fixtures',
+  screenshotsFolder: 'cypress/output/screenshots',
+  videosFolder: 'cypress/output/videos',
+  screenshotOnRunFailure: true,
+  wideo: true, 
 });
