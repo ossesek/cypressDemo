@@ -1,4 +1,8 @@
 // ***********************************************************
+
+// The support file is a great place to put reusable behavior such as custom commands or global overrides 
+//that you want applied and available to all of your spec files
+
 // This example support/e2e.js is processed and
 // loaded automatically before your test files.
 //
@@ -15,6 +19,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+const registerCypressGrep = require('@cypress/grep');
+registerCypressGrep();
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

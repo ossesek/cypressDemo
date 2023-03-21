@@ -20,14 +20,14 @@ describe('Test login & logout feature of skleptest.pl', () => {
     cy.get('.top-account').click();
   })
 
-  it('Log in with proper credentials', () => {
+  it('Log in with proper credentials @Login', () => {
     loginPage.performLogin(data.goodEmail,Cypress.env('password'));
 
     cy.contains('a', 'Logout').should('be.visible').and('have.attr', 'href');
     cy.log(`User successfully logged in`);
   })
 
-  it('Log in with wrong credentials', () => {
+  it('Log in with wrong credentials @Login', () => {
     loginPage.performLogin(data.wrongEmail,'randomStringChain');
 
     cy.contains('strong','Error:');
@@ -35,7 +35,7 @@ describe('Test login & logout feature of skleptest.pl', () => {
     cy.log(`Negative case - wrong user: Log in failed`);
   })
 
-  it('Log in with wrong password', () => {
+  it('Log in with wrong password @Login', () => {
     loginPage.performLogin(data.goodEmail,'randomStringChain');
 
     cy.contains('strong','ERROR');
