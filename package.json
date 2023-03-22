@@ -10,7 +10,8 @@
     "cy:run-headed": "cypress run --browser chrome run --headed --reporter json",
     "cy:run-mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
     "cy:report": "npx mochawesome-merge cypress/output/reports/*.json > cypress/output/report.json",
-    "cy:tag": "npx cypress run --env grep='@Login'"
+    "cy:tag": "npx cypress run --env grep='@Login'",
+    "cy:api": "npx cypress run --spec 'cypress/e2e/api_tests/*'"
   },
   "repository": {
     "type": "git",

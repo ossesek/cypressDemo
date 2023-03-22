@@ -43,5 +43,12 @@ describe('Test login & logout feature of skleptest.pl', () => {
     cy.log(`Negative case - wrong password: Log in failed`);
   })
 
-})
+  it.skip('Log out from account @Logout', () => {
+    loginPage.performLogin(data.goodEmail,Cypress.env('password'));
 
+    cy.get('.woocommerce-MyAccount-navigation-link--customer-logout').click();
+    cy.get('.woocommerce-message > a').click();
+    cy.get('h1').should('have.class','.page-title');
+  })
+
+})

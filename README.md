@@ -15,6 +15,8 @@ spec doc: https://docs.cypress.io/guides/guides/command-line <br />
 By default, cypress run will run all tests headlessly
 - npm run cy:run-headed - run your test with headed mode
 - npm run cy:run-mobile - run your test on mobile dimension 
+- npm run cy:api - run api tests
+- npm run cy:tag - run tests with proper tag (tag can be changed in package.json)
 
 ## Cypress grep - tagging tests
 
