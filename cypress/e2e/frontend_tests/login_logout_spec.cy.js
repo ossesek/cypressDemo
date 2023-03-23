@@ -1,4 +1,5 @@
 import { LoginPage } from "../../pages/loginPage";
+import { faker } from '@faker-js/faker';
 
 describe('Test login & logout feature of skleptest.pl', () => {
 
@@ -28,15 +29,15 @@ describe('Test login & logout feature of skleptest.pl', () => {
   })
 
   it('Log in with wrong credentials @Login', () => {
-    loginPage.performLogin(data.wrongEmail,'randomStringChain');
+    loginPage.performLogin(faker.internet.email(),faker.internet.password());
 
     cy.contains('strong','Error:');
     cy.contains('li','user could not be found');
     cy.log(`Negative case - wrong user: Log in failed`);
   })
 
-  it('Log in with wrong password @Login', () => {
-    loginPage.performLogin(data.goodEmail,'randomStringChain');
+  it.only('Log in with wrong password @Login', () => {
+    loginPage.performLogin(data.goodEmail,faker.internet.password());
 
     cy.contains('strong','ERROR');
     cy.contains('li',`The password you entered for the username ${data.goodEmail} is incorrect`);

@@ -1,34 +1,36 @@
-import { PokeapiPage } from "../../pages/pokeapiPage";
+import { faker } from '@faker-js/faker';
 
 describe('APi Test of pokeapi.co', () => {
 
-  const pokeapiPage = new PokeapiPage();
-
-  beforeEach(function () {
-    cy.fixture('pokeapi.json').then(data => {
-      this.pokeData = data;
-      cy.visit(data.baseUrl);
+    beforeEach(function () {
+        cy.fixture('pokeapi.json').then(data => {
+            this.pokeData = data;
+        })
     })
-  })
 
-  it('Call Pokemons endpoint @intercept', function () {
-    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon').as('pokemons');
-    pokeapiPage.typeAndCall('pokemon{enter}');
-    cy.wait('@pokemons').its('response.statusCode').should('eq', 200);
-    cy.get('@pokemons').then(res => {
-      expect(res.response.body.results).to.have.lengthOf(20);
+    it('Call pokemons with response limit of 10000 @Api', function () {
+        cy.request('GET', 'https://pokeapi.co/api/v2/pokemon?limit=100000').as('allPokemons');
+        cy.get('@allPokemons').then(res => {
+            expect(res.status).to.eq(200);
+            expect(res.body.results).to.have.length(1281);
+            expect(res.statusText).to.eq(this.pokeData.status200);
+        })
     })
-  })
 
-  it('Call Charizard Pokemon @intercept', function () {
-    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/charizard').as('charizard');
-    pokeapiPage.typeAndCall('pokemon/charizard{enter}');
-    cy.wait('@charizard').then(res => {
-      expect(res.response.statusCode).to.equal(200);
-      expect(res.response.body.weight).to.be.oneOf([905, 906]);
-      expect(res.response.body.name).to.be.eq('charizard');
+    it('Call undefined Pokemon', function () {
+        cy.request({
+            method: 'GET',
+            url: `https://pokeapi.co/api/v2/pokemon/'${faker.name.firstName()}`,
+            failOnStatusCode: false
+        }).as('randomPokemon');
+
+        cy.get('@randomPokemon').then(res => {
+            expect(res.status).to.be.equal(404);
+            expect(res.statusText).to.eq(this.pokeData.status404);
+            expect(res.isOkStatusCode).to.be.false;
+            expect(res.duration).to.be.below(2500);
+        })
     })
-  })
 
 })
 

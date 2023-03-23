@@ -98,3 +98,9 @@ You can find it and save it under cypress/pages folder
 > Cypress supports both BDD (expect/should) and TDD (assert) style plain assertions
 
 > After the Cypress spec completes every test has one of four statuses: passed, failed, pending, or skipped. The behavior of these statuses are inherited from the Mocha, since this is the test runner leveraged by Cypress.
+
+
+## Faker
+
+Faker is a popular library that generates fake (but reasonable) data. <br/>
+Using Faker is as easy as importing it from @faker-js/faker

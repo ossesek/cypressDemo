@@ -1,3 +1,5 @@
 {
-    "baseUrl": "https://pokeapi.co/"
+    "baseUrl": "https://pokeapi.co/",
+    "status200": "OK",
+    "status404": "Not Found"
 }
